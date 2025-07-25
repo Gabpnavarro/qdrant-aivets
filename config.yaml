@@ -1,0 +1,15 @@
+service:
+  api_key: ${QDRANT_API_KEY}
+  enable_tls: false
+  http_port: 6333
+  grpc_port: 6334
+  enable_cors: false
+  enable_telemetry: false
+
+storage:
+  storage_path: /qdrant/storage
+
+cluster:
+  enabled: false
+
+log_level: INFO 
