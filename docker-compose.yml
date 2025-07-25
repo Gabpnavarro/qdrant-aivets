@@ -2,14 +2,17 @@ version: '3.9'
 
 services:
   qdrant:
-    image: qdrant/qdrant
+    image: qdrant/qdrant:latest
     container_name: qdrant
+    restart: always
+    environment:
+      - QDRANT_SERVICE_API_KEY=${QDRANT_API_KEY}
     ports:
-      - "6333:6333"  # Porta principal da API
+      - "6333:6333"
     volumes:
-      - ./data:/qdrant/storage  # Dados salvos no disco local
-    restart: unless-stopped
+      - ./data:/qdrant/storage
     deploy:
       resources:
         limits:
-          memory: 512M  # Limita RAM usada pelo container (opcional)
+          cpus: "0.5"
+          memory: 1024M
