@@ -1,19 +1,23 @@
-version: '3.9'
-
 services:
   qdrant:
     image: qdrant/qdrant:latest
     container_name: qdrant
     restart: always
     environment:
-      - QDRANT_SERVICE_API_KEY=${QDRANT_API_KEY}  # ok via .env
+      - QDRANT_SERVICE_API_KEY=290b30bd-1141-4489-9a21-c7c8bfe1cfbf-nfga76asbas76ads-sdadas7bas
+      - QDRANT_SERVICE_API_KEY_REQUIRED=true
+      - QDRANT_SERVICE_ENABLE_TLS=false
+      - QDRANT_SERVICE_HTTP_PORT=6333
+      - QDRANT_SERVICE_GRPC_PORT=6334
+      - QDRANT_SERVICE_ENABLE_CORS=false
+      - QDRANT_SERVICE_ENABLE_TELEMETRY=false
     ports:
       - "6333:6333"
       - "6334:6334"
     volumes:
       - ./data:/qdrant/storage
-      - ./config.yaml:/qdrant/config.yaml
-    command: ./qdrant --config /qdrant/config.yaml
+      - ./qdrant_config.yaml:/qdrant/config.yaml
+    command: ./qdrant --config-path /qdrant/config.yaml
     deploy:
       resources:
         limits:

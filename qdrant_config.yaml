@@ -1,5 +1,6 @@
 service:
-  api_key: ${QDRANT_API_KEY}
+  api_key: 290b30bd-1141-4489-9a21-c7c8bfe1cfbf-nfga76asbas76ads-sdadas7bas
+  api_key_required: true
   enable_tls: false
   http_port: 6333
   grpc_port: 6334
